@@ -1,4 +1,4 @@
-big-wheel
-=========
+hohokum - paper
+===============
 
-wheel of fortune for pub maps
+attempt to recreate hohokum game using Paper.js
