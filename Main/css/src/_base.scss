@@ -1,0 +1,42 @@
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html{
+    overflow-y:scroll;
+    min-height:100%;
+}
+
+body {
+	background-color: #efefef;
+  margin: 0;
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+  background: $primary-b;
+  text-shadow: none;
+}
+
+::selection {
+  background: $primary-b;
+  text-shadow: none;
+}
+
+
+/* ==========================================================================
+   Browse Happy prompt
+   ========================================================================== */
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: $primary-b;
+  color: $primary-d;
+  padding: 0.2em 0;
+}
+
