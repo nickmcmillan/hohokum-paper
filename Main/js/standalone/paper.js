@@ -1,3 +1,18 @@
+document.body.ontouchmove = function(event){
+    event.preventDefault();
+};
+
+function isTouchDevice() {
+  return 'ontouchstart' in window || 'onmsgesturechange' in window; // works on ie10
+}
+
+var isMobile = isTouchDevice() && screen.width <= 768;
+
+if (isMobile) {
+  document.querySelectorAll('.buttons')[0].style.display = 'block';
+}
+
+
 // set some defaults
 project.currentStyle = {
      //strokeColor: 'black',
@@ -197,57 +212,98 @@ function onKeyUp(e) {
     
 }
 
+// cache the buttons
+var leftButton = document.getElementById('left');
+var rightButton = document.getElementById('right');
+var forwardButton = document.getElementById('forward');
+var backButton = document.getElementById('back');
+
+// these vars store which buttons are currently being held down
+var leftDown = false;
+var rightDown = false;
+var forwardDown = false;
+var backDown = false;
 
 function onFrame(e) {
+
+
+  path.strokeColor = {
+    gradient: {
+      stops: [
+        ['#2c62a0', 0],
+        ['#2c62a0', 0.22],
+        ['#09989c', 0.23],
+        ['#09989c', 0.40],
+        ['#d9d400', 0.41],
+        ['#d9d400', 0.52],
+        ['#ef3282', 0.53],
+        ['#ef3282', 0.58],
+        ['#642671', 0.59],
+        ['#642671', 0.68],
+        ['#e8594b', 0.69],
+        ['#e8594b', 1]
+      ]
+    },
+      origin: path.bounds.left,
+      destination: path.bounds.right
+  };
+
+
+ 
+/*eye.strokeColor = {
+hue: e.count / 10 + 220, // to get closer to starting point blue
+saturation: 0.7,
+brightness: 0.6
+};*/
+
+
+
+
+  leftButton.ontouchstart = function() {
+    leftDown = true;
+  }
+  leftButton.ontouchend = function() {
+    leftDown = false;
+  }
+  rightButton.ontouchstart = function() {
+    rightDown = true;
+  }
+  rightButton.ontouchend = function() {
+    rightDown = false;
+  }
+  forwardButton.ontouchstart = function() {
+    forwardDown = true;
+  }
+  forwardButton.ontouchend = function() {
+    forwardDown = false;
+  }
+  backButton.ontouchstart = function() {
+    backDown = true;
+  }
+  backButton.ontouchend = function() {
+    backDown = false;
+  }
+
+
+  // keyboard controls || touch controls
+  if (Key.isDown('left') || leftDown) {
+    snake.left();
+  }
+  if (Key.isDown('right') || rightDown) {
+    snake.right();
+  }
+  if (Key.isDown('up') || forwardDown) {
+    snake.forward();
+  }
+  if (Key.isDown('down') || backDown) {
+    snake.reverse();
+  }
+
+  // if not accellerating, and not breaking, then return to default speed
+  if (!forwardDown && !backDown && !Key.isDown('up') && !Key.isDown('down')) {
+    snake.returnSpeed();
+  }
      
-     // colour hueing
-
-     path.strokeColor = {
-      gradient: {
-          stops: [
-            ['#2c62a0', 0],
-            ['#2c62a0', 0.22],
-            ['#09989c', 0.23],
-            ['#09989c', 0.40],
-            ['#d9d400', 0.41],
-            ['#d9d400', 0.52],
-            ['#ef3282', 0.53],
-            ['#ef3282', 0.58],
-            ['#642671', 0.59],
-            ['#642671', 0.68],
-            ['#e8594b', 0.69],
-            ['#e8594b', 1]
-          ]
-      },
-        origin: path.bounds.left,
-        destination: path.bounds.right
-     };
-
-     /*eye.strokeColor = {
-          hue: e.count / 10 + 220, // to get closer to starting point blue
-          saturation: 0.7,
-          brightness: 0.6
-     };*/
-
-     
-     // keyboard controls
-    
-     if (Key.isDown('left'))
-          snake.left();
-
-     if (Key.isDown('right'))
-          snake.right();
-
-     if (Key.isDown('up'))
-          snake.forward();
-
-     if (Key.isDown('down'))
-          snake.reverse();
-    
-    // if not accellerating, and not breaking, then return to default speed
-    if (!Key.isDown('up') && !Key.isDown('down'))
-         snake.returnSpeed();
-     
-     snake.draw();
+  snake.draw();
 
 }
