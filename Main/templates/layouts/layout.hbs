@@ -21,17 +21,25 @@
 
   <body>
 
-          {{> body}}
+    <!--[if lte IE 10]>
+       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
 
+    {{> body}}
 
-          
-{{#if production}}
-    <script src="js/scripts.min.js"></script>
-{{else}}
-    <script src="js/plugins.js"></script>
-    
-{{/if}}
+    <footer>
+        <p>An experiment to recreate the Playstation game <a href="http://hohokum.playstation.com/" target="_blank">Hohokum</a> using <a href="http://www.paperjs.org" target="_blank">Paper.js</a></p>
+        <p>Made by <a href="https://twitter.com/nickuuuuu" target="_blank">@nickuuuuu</a></p>
+        <p><a href="https://github.com/heynick/hohokum-paper" target="_blank">View this on Github</a></p>
+    </footer>
 
+    <script type="text/paperscript" src="js/paper.js" canvas="canvas"></script>
+  
+    {{#if production}}
+        <script src="js/scripts.min.js"></script>
+    {{else}}
+        <script src="js/plugins.js"></script>
+    {{/if}}
 
   </body>
 </html>

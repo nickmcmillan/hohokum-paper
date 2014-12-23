@@ -5,11 +5,14 @@
 html{
     overflow-y:scroll;
     min-height:100%;
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
 	background-color: #f5f9ea;
   margin: 0;
+  font-size: 0.75em;
   transition: background-color 200ms ease-in-out;
 }
 
@@ -44,4 +47,3 @@ body {
   color: $primary-d;
   padding: 0.2em 0;
 }
-

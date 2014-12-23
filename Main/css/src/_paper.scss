@@ -13,21 +13,16 @@
 	right: 0;
 	opacity: 0.4;
 
-
-
 	// otherwise you can select the buttons as if they were text
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
-
 }
 
-
-
+// buttons
 .left {
 	float: left;
 }
@@ -42,7 +37,6 @@ button {
 	padding: 0 1em;
 }
 
-
 #right {
 	transform: scaleX(-1);
 	filter: FlipH;
@@ -55,4 +49,41 @@ button {
 
 #back {
 	transform: rotate(270deg);
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	text-align: center;
+	margin: 1em;
+	opacity: 0.3;
+	transition: opacity 150ms ease-in-out;
+  	color: #999;
+  	
+
+	&:hover {
+		opacity: 1;
+	}
+
+	@media (max-height: 500px) {
+	  display: none;
+	}
+}
+
+p {
+  font-family: Arial;
+  letter-spacing: -0.2px;
+  line-height: 1.5;
+  margin: 0;
+}
+a {
+  color: #2c62a0;
+  font-weight: bold;
+  text-decoration: none;
+  &:hover,
+  &:focus {
+  	color: lighten(#2c62a0, 20%);
+  }
 }
