@@ -396,8 +396,8 @@ module.exports = function (grunt) {
         // minification and concatenation tasks
         //'imagemin:dynamic',
         'cssmin',
-        'concat',
-        'uglify'
+        'concat'
+        //'uglify'
     ]);
 
     grunt.registerTask('serve-iis', ['devbuild', 'browserSync:iis', 'watch']);

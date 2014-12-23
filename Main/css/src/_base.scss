@@ -8,8 +8,13 @@ html{
 }
 
 body {
-	background-color: #efefef;
+	background-color: #f5f9ea;
   margin: 0;
+  transition: background-color 200ms ease-in-out;
+}
+
+.complete {
+  background-color: #222;
 }
 
 /*
