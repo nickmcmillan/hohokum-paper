@@ -1,4 +1,6 @@
-hohokum - paper
+Hohokum - created using Paper.js
 ===============
 
-attempt to recreate hohokum game using Paper.js
+An experiment to recreate the Playstation game Hohokum using Paper.js
+
+[Live demo](http://allofmyfriendsareontheinternet.com/tests/hohokum-paper/)
