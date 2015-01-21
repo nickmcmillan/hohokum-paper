@@ -136,10 +136,12 @@ function Vector3D(x, y, z) {
   this.x = x || 0;
   this.y = y || 0;
   this.z = z || 0;
+}
 
-  this.__defineGetter__("length", function() {
+Vector3D.prototype = {
+  get length() {
     return Math.sqrt(this.x*this.x + this.y*this.y + this.z*this.z);
-  });
+  }
 }
 
 Vector3D.prototype.normalize = function(len) {
